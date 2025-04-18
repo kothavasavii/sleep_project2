@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Quality Predictor</title>
+  <style>
+  :root {
+  --primary-color: #4CAF50;
+  --secondary-color: #2c3e50;
+  --light-color: #ddebf8;
+  --dark-color: #333;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+
+/* Header & Navigation */
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0 80px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #34495e;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content */
+main {
+  min-height: calc(100vh - 120px);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: var(--box-shadow);
+  margin: 1rem 0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--secondary-color);
+}
+
+h2,h3,h4 {
+  color: var(--secondary-color);
+  margin: 1.5rem 0 1rem;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input,select,textarea {
+  padding: 0.8rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  width: 100%;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Results Section */
+.results {
+  margin-top: 2rem;
+  background-color: #f0f8ff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  border-left: 4px solid white;
+}
+
+.results p {
+  margin: 0.8rem 0;
+}
+
+ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav ul {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: center;
+  }
+
+  .container {
+      padding: 1.5rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/prediction">Sleep Prediction</a></li>
+        <li><a href="/about">About Us</a></li>
+        <!-- <li><a href="/contact">Contact Us</a></li> -->
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <div class="container">
+      <h1>🌙 Sleep Quality Predictor</h1>
+      
+      <form id="sleepForm">
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" name="age" required />
+        </div>
+
+        <div class="form-group">
+          <label>Gender</label>
+          <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Occupation</label>
+          <select name="occupation">
+            <option value="Nurse">Nurse</option>
+            <option value="Engineer">Engineer</option>
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Accountant">Accountant</option>
+            <option value="Scientist">Scientist</option>
+            <option value="Lawyer">Lawyer</option>
+            <option value="Salesperson">Salesperson</option>
+            <option value="Manager">Manager</option>
+            <option value="Student">Student</option>
+            <option value="Athlete">Athlete</option>
+            <option value="Artist">Artist</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Sales Representative">Sales Representative</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Sleep Duration (hours)</label>
+          <input type="number" name="sleepDuration" step="0.1" required />
+        </div>
+
+        
+        <div class="form-group">
+          <label>Daily Steps</label>
+          <input type="number" name="steps" required />
+        </div>
+
+        <div class="form-group">
+          <label>Weight (kg)</label>
+          <input type="number" name="weight" step="0.1" required />
+        </div>
+
+        <div class="form-group">
+          <label>Height (cm)</label>
+          <input type="number" name="height" required />
+        </div>
+
+        <div class="form-group">
+          <label>Systolic BP</label>
+          <input type="number" name="systolic" required />
+        </div>
+
+        <div class="form-group">
+          <label>Diastolic BP</label>
+          <input type="number" name="diastolic" required />
+        </div>
+
+        <div class="form-group">
+          <label>Heart Rate</label>
+          <input type="number" name="heartRate" required />
+        </div>
+
+        <button type="submit">Predict Sleep Quality</button>
+      </form>
+
+      <div class="results" id="results" style="display:none">
+        <h2>Your Sleep Analysis Report</h2>
+        
+        <h3>📊 BMI Results</h3>
+        <p id="bmiValue"></p>
+        <p id="bmiCategory"></p>
+
+        <h3>📈 Sleep Quality</h3>
+        <p>Predicted Sleep Quality: <strong><span id="sleepScore"></span></strong></p>
+
+        <h3>🚨 Risk Assessment</h3>
+        <p id="disorderRisk"></p>
+
+        <h3>🌜 Sleep Duration</h3>
+        <p id="durationFeedback"></p>
+
+        <h3>💡 Recommendations</h3>
+        <div class="recommendations">
+          <h4>🌙 Sleep Hygiene Tips</h4>
+          <ul>
+            <li>📵 Create a tech-free zone 1 hour before bed</li>
+            <li>🌡️ Keep bedroom temperature between 60-67°F (15-19°C)</li>
+            <li>🛏️ Reserve bed only for sleep (no work or TV)</li>
+          </ul>
+
+          <h4>☀️ Morning Routine</h4>
+          <ul>
+            <li>Open curtains immediately upon waking</li>
+            <li>Drink a glass of water first thing in the morning</li>
+            <li>Engage in light stretching or exercise</li>
+          </ul>
+        </div>
+
+        <p class="final-note">💬 Remember: Small consistent changes make the biggest difference!</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Sleep Quality Predictor. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('sleepForm').addEventListener('submit', async function(event) {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const formObject = Object.fromEntries(formData.entries());
+  
+  // Convert numeric fields to numbers
+  formObject.age = Number(formObject.age);
+  formObject.sleepDuration = Number(formObject.sleepDuration);
+  formObject.steps = Number(formObject.steps);
+  formObject.weight = Number(formObject.weight);
+  formObject.height = Number(formObject.height);
+  formObject.systolic = Number(formObject.systolic);
+  formObject.diastolic = Number(formObject.diastolic);
+  formObject.heartRate = Number(formObject.heartRate);
+
+  try {
+    const response = await fetch("/prediction", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formObject)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    // Determine sleep quality based on duration only
+    const sleepDuration = formObject.sleepDuration;
+    let sleepQuality, qualityColor;
+    
+    if (sleepDuration < 5) {
+      sleepQuality = "Poor";
+      qualityColor = "#e74c3c"; // Red
+    } else if (sleepDuration < 7) {
+      sleepQuality = "Average";
+      qualityColor = "#f39c12"; // Orange
+    } else {
+      sleepQuality = "Good";
+      qualityColor = "#2ecc71"; // Green
+    }
+
+    // Update the UI
+    document.getElementById('bmiValue').innerText = `BMI: ${result.bmi} (${result.bmi_category})`;
+    document.getElementById('bmiCategory').innerText = `Category: ${result.bmi_category}`;
+    
+    // Only show the quality rating, not the numeric score
+    document.getElementById('sleepScore').innerHTML = 
+      `<span style="color: ${qualityColor}; font-weight: bold;">${sleepQuality}</span>`;
+    
+    document.getElementById('disorderRisk').innerText = result.disorder_risk || "No significant risk detected";
+    document.getElementById('durationFeedback').innerText = 
+      `${sleepDuration} hours - ${sleepDuration >= 7 && sleepDuration <= 9 ? 
+        '✅ Optimal duration for adults' : 
+        '⚠️ Try to aim for 7-9 hours'}`;
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+
+  } catch (error) {
+    console.error("Prediction error:", error);
+    alert(`Prediction failed: ${error.message}`);
+  }
+});
+ 
+  </script>
+</body>
+</html>

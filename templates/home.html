@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleep Quality Predictor</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/prediction">Sleep Prediction</a></li>
+        <li><a href="/about">About Us</a></li>
+        <!-- <li><a href="/contact">Contact Us</a></li> -->
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>🌙 Sleep Quality Predictor</h1>
+      <p>Discover your sleep quality and get personalized recommendations</p>
+      <a href="/prediction" class="cta-button">Try Our Predictor</a>
+    </section>
+
+    <section class="features">
+      <div class="feature-card" onclick="showExpertTips()">
+        <h3>Expert Recommendations</h3>
+        <p>Receive actionable tips to improve your sleep</p>
+      </div>
+      <div class="feature-card" onclick="showRiskAssessment()">
+        <h3>Risk Assessment</h3>
+        <p>Understand your risk for sleep disorders</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Expert Recommendations Modal -->
+  <div id="expertModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>🧠 Expert Recommendations</h2>
+      <p>Improving your sleep doesn't have to be complicated. Based on research and best practices in sleep science, here are some expert-backed tips to help you sleep better and boost your overall well-being:</p>
+      
+      <div class="tip">
+        <h3>🌙 1. Maintain a Consistent Sleep Schedule</h3>
+        <p>Go to bed and wake up at the same time every day — even on weekends. This helps regulate your body's internal clock and can help you fall asleep and stay asleep for the night.</p>
+      </div>
+      
+      <div class="tip">
+        <h3>📵 2. Limit Screen Time Before Bed</h3>
+        <p>Avoid using phones, laptops, or watching TV at least 1 hour before bedtime. The blue light emitted from screens can interfere with melatonin production and disrupt your natural sleep cycle.</p>
+      </div>
+      
+      <div class="tip">
+        <h3>🧘 3. Reduce Stress Through Relaxation</h3>
+        <p>Engage in calming activities like deep breathing, meditation, or reading before bed. Managing stress is key to improving the quality of your sleep.</p>
+      </div>
+      
+      <div class="tip">
+        <h3>🏃‍♀️ 4. Stay Active During the Day</h3>
+        <p>Regular physical activity during the day can help you fall asleep faster and enjoy deeper sleep. Just avoid intense workouts too close to bedtime.</p>
+      </div>
+      
+      <div class="tip">
+        <h3>🥗 5. Be Mindful of What You Eat & Drink</h3>
+        <p>Avoid caffeine, alcohol, and heavy meals in the evening. These can disturb your sleep or make it harder to fall asleep.</p>
+      </div>
+      
+      <div class="tip">
+        <h3>🌡️ 6. Optimize Your Sleep Environment</h3>
+        <p>Keep your bedroom cool, quiet, and dark. A comfortable mattress and pillow can also make a big difference in sleep quality.</p>
+      </div>
+      
+      <div class="tip">
+        <h3>📊 7. Use Data to Improve Your Sleep</h3>
+        <p>Track your sleep patterns using our Sleep Quality Predictor and learn how daily habits affect your rest. The more you know, the better you can adjust your routine for optimal results.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Risk assessment model -->
+   <!-- Risk Assessment Modal -->
+<div id="riskModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeRiskModal()">&times;</span>
+    <h2>⚠️ Risk Assessment</h2>
+    <p>Understanding the risks associated with poor sleep is just as important as improving it. Based on health studies and expert insights, here are the key risks of consistently poor sleep quality and why early detection matters:</p>
+    
+    <div class="tip">
+      <h3>🧠 1. Cognitive Decline and Poor Focus</h3>
+      <p>Sleep deprivation impairs brain function. It reduces concentration, short-term memory, and decision-making ability, making everyday tasks harder and more error-prone.</p>
+    </div>
+    
+    <div class="tip">
+      <h3>💓 2. Increased Risk of Heart Disease</h3>
+      <p>Chronic poor sleep can lead to increased blood pressure, inflammation, and abnormal heart rhythms, which are risk factors for heart disease and stroke.</p>
+    </div>
+    
+    <div class="tip">
+      <h3>⚖️ 3. Weight Gain and Metabolic Issues</h3>
+      <p>Lack of sleep can disrupt hunger-regulating hormones, leading to overeating and weight gain. It's also linked with a higher risk of type 2 diabetes and obesity.</p>
+    </div>
+    
+    <div class="tip">
+      <h3>😔 4. Mood Disorders and Mental Health Risks</h3>
+      <p>Sleep is closely linked to emotional regulation. Insufficient or fragmented sleep increases the risk of depression, anxiety, irritability, and mood swings.</p>
+    </div>
+    
+    <div class="tip">
+      <h3>🛡️ 5. Weakened Immune System</h3>
+      <p>Poor sleep can lower your body's defense against infections, making you more vulnerable to colds, flu, and other illnesses.</p>
+    </div>
+    
+    <div class="tip">
+      <h3>🚗 6. Higher Risk of Accidents</h3>
+      <p>Sleep-deprived individuals are more prone to workplace errors and road accidents. Studies show drowsy driving can be just as dangerous as drunk driving.</p>
+    </div>
+    
+    <div class="tip">
+      <h3>📉 7. Decline in Daily Performance</h3>
+      <p>From reduced productivity to missed deadlines, poor sleep impacts your performance in both personal and professional life.</p>
+    </div>
+    
+    <div class="tip highlight">
+      <h3>📲 Why Risk Assessment Matters</h3>
+      <p>Using a Sleep Quality Predictor helps you identify these risks early, by analyzing patterns and detecting warning signs in your sleep behavior. This enables you to take timely action, reduce health risks, and make data-informed lifestyle improvements.</p>
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+    <p>&copy; 2023 Sleep Quality Predictor. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Function to show the expert tips modal
+    function showExpertTips() {
+      document.getElementById('expertModal').style.display = 'block';
+    }
+    
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById('expertModal').style.display = 'none';
+    }
+    
+
+    function showRiskAssessment() {
+      document.getElementById('riskModal').style.display = 'block';
+    }
+
+  // Function to close the risk modal
+  function closeRiskModal() {
+    document.getElementById('riskModal').style.display = 'none';
+  }
+    // Close the modal if user clicks outside of it
+  window.onclick = function(event) {
+  const expertModal = document.getElementById('expertModal');
+  const riskModal = document.getElementById('riskModal');
+  
+  if (event.target == expertModal) {
+    expertModal.style.display = 'none';
+  }
+  if (event.target == riskModal) {
+    riskModal.style.display = 'none';
+  }
+}
+  </script>
+</body>
+</html>
